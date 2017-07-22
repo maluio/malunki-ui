@@ -1,0 +1,25 @@
+<div *ngIf="card" class="section card-list">
+    <div class="text-right row-margin">
+        <button *ngIf="preDelete" type="submit" class="float-right btn btn-danger" (click)="deleteCard()">Really?
+        </button>
+        <button *ngIf="preDelete" type="submit" class="btn btn-success" (click)="setPreDelete(false)">Cancel</button>
+    </div>
+    <div class="row-margin">
+      card id: <b>{{card.id}}</b>
+    </div>
+    <div class="row-margin">
+        <div class="form-group">
+            <textarea [(ngModel)]="card.front" placeholder="front" class="form-control" rows="7"></textarea>
+        </div>
+        <div class="form-group">
+            <textarea [(ngModel)]="card.back" placeholder="back" class="form-control" rows="7"></textarea>
+        </div>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-success" (click)="updateCard()">Update</button>
+        <button type="submit" class="btn btn-success" (click)="learnNow()">Learn now</button>
+        <button *ngIf="card.back" type="submit" class="btn btn-success" (click)="flipFrontAndBack()">Flip (front/back)</button>
+        <button *ngIf="!card.back" type="submit" class="btn btn-success" disabled="disabled">Flip (front/back)</button>
+        <button *ngIf="!preDelete" type="submit" class="btn btn-warning" (click)="setPreDelete(true)">Delete</button>
+    </div>
+</div>

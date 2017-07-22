@@ -1,0 +1,21 @@
+<hr>
+<div *ngIf="errors.length" class="alert alert-danger" role="alert">
+  <ul *ngFor="let error of errors">
+    <li>{{error.message}}</li>
+  </ul>
+</div>
+
+<ul class="nav nav-pills" *ngIf="cardService.cards">
+  <li role="presentation"><a routerLink="/" routerLinkActive="active">
+    Learn <span class="badge">{{(cardService.cards | async).filter(filterDueCards).length}}</span></a>
+  </li>
+  <li role="presentation"><a routerLink="/list" routerLinkActive="active">List</a></li>
+  <li role="presentation"><a routerLink="/create" routerLinkActive="active">Create</a></li>
+  <li role="presentation">
+    <button type="submit" class="btn btn-success btn-sm" (click)="reload()">
+      <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+    </button>
+  </li>
+</ul>
+<hr>
+<router-outlet></router-outlet>

@@ -1,0 +1,18 @@
+<div class="section">
+    <table class="table table-striped normal-font-size">
+        <thead>
+        <tr>
+            <th>Due</th>
+            <th>Front</th>
+            <th>Back</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let card of cardService.cards | async" (click)="onSelect(card)">
+            <td [innerHtml]="card.reviewDate | due"></td>
+            <td [innerHtml]="card.front | result | gender | image"></td>
+            <td [innerHtml]="card.back | result | gender | image"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
