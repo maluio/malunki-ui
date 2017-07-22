@@ -2,22 +2,23 @@ sudo: required
 dist: trusty
 language: node_js
 node_js:
-  - '6.11'
-
+- '6.11'
 addons:
 apt:
   sources:
-    - google-chrome
+  - google-chrome
   packages:
-    - google-chrome-stable
-    - google-chrome-beta
-
+  - google-chrome-stable
+  - google-chrome-beta
 before_install:
-  - export CHROME_BIN=chromium-browser
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-
+- export CHROME_BIN=chromium-browser
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
 before_script:
 - npm install
-
 script: npm run ci-test
+deploy:
+  provider: heroku
+  app: limitless-atoll-18387
+  api_key:
+    secure: sJwpjtoxxvjn79unxPB12M9XXMecqR1rzPmYbdtH1/hZE8+nuHACXm2xQ/hBXQ/vQQfSFvpKR/+yd9KB+mFbHN4i9vBc1k7+3/K2y3iS9ivTVdOCc4XYMI1fdz45FmqU7WjA2jtVm29Ruuzqgj4ntpmfCrP+kCMgTwGsigM1/nzzcvxsBTSLV/ed72QeFoPKOWI+OPblJ0bz4VG5yckwAdo7NrMCzpnS1wRRokOUttnm4y3SmtAtnnVea7vbLq06lHlkRlGKayfNdnfpMK8gIskO9fLtcgelvPXwgdfl7Hf6WSNZbuLPRC5YQzqBJ/cSkajvNoA6jxJ6GE2PS0T29r6DcP817uz0OMwjYozdOsObdbz8g/Gq+PJxnk3X7niTZPJjzbCnpr3VPNwmoktJR+3xylwbkUZs00qaDCyMzWXUMbiAKJDsFyBuNIY2j2TQAt6DF1vWYZK/KhI3UoMvsHdHSChxoIL8kcF8aTTGAwr6TVYeT9kxKyYewMKOjNmgKHVWhGeuEdWQ7TJPdubifUAHFdBaZ0sEYS3j8bJSqidVhsrpn5Zu51SLltp2lLDYnJb18Yc5aSfGJbD2sMDtIYLYZ8cc4HXLDVMuygtdUJ8Rn3CPLl9RMqdAkvI8ezCUgwJ4ZzO4dYSwPP+qWuLZDTv/pfCJqdGl4iVD4PeeI1s=
