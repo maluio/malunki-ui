@@ -70,7 +70,7 @@ export class AppLearn {
         this.word = '';
         const regEx = new RegExp('(' + markerSeparator + '.+' + markerSeparator + ')', 'g');
         const match = this.dueCard.front.match(regEx);
-        if (match[0].length > 0) {
+        if (match && match[0].length > 0) {
             this.word = match[0].split(markerSeparator).join('');
         }
     }
