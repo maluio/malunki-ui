@@ -8,6 +8,7 @@
     <button class='btn btn-default btn-block' (click)="reveal()">Show</button>
   </div>
   <div *ngIf="revealed">
+    <div class="well"><span class="label label-success">{{dueCard.word}}</span></div>
     <div *ngIf="!dueCard.back" class="well" [innerHtml]="dueCard.front | result | gender | image"></div>
     <div *ngIf="dueCard.back" class="well" [innerHtml]="dueCard.back | result | gender | image"></div>
     <div class="row-margin">

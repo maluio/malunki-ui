@@ -3,6 +3,7 @@
         <thead>
         <tr>
             <th>Due</th>
+            <th>Word</th>
             <th>Front</th>
             <th>Back</th>
         </tr>
@@ -10,6 +11,7 @@
         <tbody>
         <tr *ngFor="let card of cardService.cards | async" (click)="onSelect(card)">
             <td [innerHtml]="card.reviewDate | due"></td>
+            <td> {{card.word}}</td>
             <td [innerHtml]="card.front | result | gender | image"></td>
             <td [innerHtml]="card.back | result | gender | image"></td>
         </tr>
