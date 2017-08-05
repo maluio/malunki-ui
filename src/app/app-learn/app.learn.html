@@ -1,16 +1,15 @@
 <div *ngIf="dueCard" [@flyOut]>
   <div class="row-margin text-right">
   </div>
-  <div *ngIf="!dueCard.back" class="well" [innerHtml]="dueCard.front | mask  | gender | image"></div>
-  <div *ngIf="dueCard.back" class="well" [innerHtml]="dueCard.front | result | gender | image"></div>
+  <div class="well"><span class="label label-success">{{dueCard.word | stars }}</span></div>
+  <div class="well" [innerHtml]="dueCard.front | mask  | gender | image"></div>
   <div class="row-margin">
     <input type="text" class="form-control" placeholder="type word" (keyup)="onSolutionKey($event)">
     <button class='btn btn-default btn-block' (click)="reveal()">Show</button>
   </div>
   <div *ngIf="revealed">
     <div class="well"><span class="label label-success">{{dueCard.word}}</span></div>
-    <div *ngIf="!dueCard.back" class="well" [innerHtml]="dueCard.front | result | gender | image"></div>
-    <div *ngIf="dueCard.back" class="well" [innerHtml]="dueCard.back | result | gender | image"></div>
+    <div class="well" [innerHtml]="dueCard.front | result | gender | image"></div>
     <div class="row-margin">
       <button class='btn btn-default btn-block btn-lg' (click)="learnCard(dueCard, 0)">again</button>
       <button class='btn btn-default btn-block btn-lg' (click)="learnCard(dueCard, 240)">4 hours</button>

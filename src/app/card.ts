@@ -4,5 +4,4 @@ export class Card {
     minutesTilNextReview: number = 0;
     word: string;
     front: string;
-    back: string;
 }

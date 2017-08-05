@@ -46,14 +46,6 @@ export class AppEdit implements OnInit{
         this.preDelete = false;
     }
 
-   flipFrontAndBack():void {
-     if (this.card.back){
-       let temp = this.card.front;
-       this.card.front = this.card.back;
-       this.card.back = temp;
-     }
-   }
-
    learnNow():void{
       this.cardService.learnCard(this.card, 0);
       this.router.navigateByUrl("/list");
