@@ -24,12 +24,11 @@ export class CardHttpService {
       }
 
       if (document.location.hostname == "localhost") {
-          this.apiUrl = 'http://localhost/app_dev.php/cards';
+          this.apiUrl = 'http://localhost/cards';
       }
-console.log(this.authService.getUsername());
-console.log(this.authService.getPassword());
       this.headers = new Headers(
         {
+          'Accept': 'application/json',
           'Content-Type': 'application/json',
           'Authorization': 'Basic ' +  btoa(this.authService.getUsername() + ':' + this.authService.getPassword())
         }
@@ -37,7 +36,7 @@ console.log(this.authService.getPassword());
     }
 
     getCards(): Promise<Card[]> {
-        return this.http.get(this.apiUrl + '.json', {headers: this.headers})
+        return this.http.get(this.apiUrl, {headers: this.headers})
             .toPromise()
             .then(response => response.json() as Card[])
             .catch((error) => {
