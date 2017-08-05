@@ -17,11 +17,12 @@ import {CardHttpService} from './cardhttp.service';
 import {ErrorService} from './error.service';
 import {AuthenticationService} from './authentication.service';
 import {AppLoginComponent} from './app-login/app-login.component';
-import {MaskPipe} from './pipes/mask.pipe'
-import {ResultPipe} from './pipes/result.pipe'
-import {DuePipe} from './pipes/due.pipe'
-import {GenderPipe} from './pipes/gender.pipe'
-import {ImagePipe} from './pipes/image.pipe'
+import {MaskPipe} from './pipes/mask.pipe';
+import {ResultPipe} from './pipes/result.pipe';
+import {DuePipe} from './pipes/due.pipe';
+import {GenderPipe} from './pipes/gender.pipe';
+import {ImagePipe} from './pipes/image.pipe';
+import {StarPipe} from './pipes/stars.pipe';
 
 const appRoutes: Routes = [
     {path: '', component: AppLearn},
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
         ResultPipe,
         DuePipe,
         GenderPipe,
-        ImagePipe
+        ImagePipe,
+        StarPipe
     ],
     imports: [
         BrowserModule,
