@@ -1,9 +1,16 @@
 <div class="section card-list">
   <div class="form-group">
-    <textarea [(ngModel)]="card.word" placeholder="word" class="form-control" rows="1"></textarea>
-  </div>
-    <div class="form-group">
-        <textarea [(ngModel)]="card.front" placeholder="front" class="form-control" rows="7"></textarea>
+    <div class="form-inline">
+      <input type="text" placeholder="word" class="form-control" [(ngModel)]="card.word">
+      <select [(ngModel)]="card.gender">
+        <option value="">-</option>
+        <option value="female">female</option>
+        <option value="male">male</option>
+      </select>
     </div>
-    <button type="submit" class="btn btn-success" (click)="createCard()">Create</button>
+  </div>
+  <div class="form-group">
+    <textarea [(ngModel)]="card.front" placeholder="front" class="form-control" rows="7"></textarea>
+  </div>
+  <button type="submit" class="btn btn-success" (click)="createCard()">Create</button>
 </div>

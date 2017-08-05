@@ -4,4 +4,5 @@ export class Card {
     minutesTilNextReview: number = 0;
     word: string;
     front: string;
+    gender: string = null;
 }
