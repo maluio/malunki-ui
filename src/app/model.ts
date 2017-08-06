@@ -5,4 +5,10 @@ export class Card {
     word: string;
     front: string;
     gender: string = null;
+    images: Image[] = [];
+}
+
+export class Image {
+    id: number;
+    url: string;
 }

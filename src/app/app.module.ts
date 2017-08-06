@@ -21,7 +21,6 @@ import {MaskPipe} from './pipes/mask.pipe';
 import {ResultPipe} from './pipes/result.pipe';
 import {DuePipe} from './pipes/due.pipe';
 import {GenderPipe} from './pipes/gender.pipe';
-import {ImagePipe} from './pipes/image.pipe';
 import {StarPipe} from './pipes/stars.pipe';
 
 const appRoutes: Routes = [
@@ -45,7 +44,6 @@ const appRoutes: Routes = [
         ResultPipe,
         DuePipe,
         GenderPipe,
-        ImagePipe,
         StarPipe
     ],
     imports: [

@@ -4,7 +4,7 @@ import {AuthenticationService} from './authentication.service';
 
 import 'rxjs/add/operator/toPromise';
 
-import {Card} from './card';
+import {Card} from './model';
 import {ErrorService, Error} from "./error.service";
 
 @Injectable()

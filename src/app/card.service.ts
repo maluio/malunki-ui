@@ -2,7 +2,7 @@ import {CardHttpService} from './cardhttp.service';
 import {Injectable}    from '@angular/core';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject'
 
-import {Card} from './card';
+import {Card} from './model';
 import {Observable} from "rxjs";
 
 @Injectable()

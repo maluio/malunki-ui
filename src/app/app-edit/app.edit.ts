@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 
-import {Card} from '../card';
+import {Card, Image} from '../model';
 import {CardService} from '../card.service';
 
 @Component({
@@ -12,6 +12,7 @@ import {CardService} from '../card.service';
 export class AppEdit implements OnInit{
 
     card: Card = new Card;
+    image: Image = new Image;
     preDelete: boolean = false;
 
     constructor(
@@ -50,5 +51,16 @@ export class AppEdit implements OnInit{
       this.cardService.learnCard(this.card, 0);
       this.router.navigateByUrl("/list");
    }
+/*
+  addImage(): void {
+    if (this.image.url) {
+      this.card.images.push(this.image);
+      this.image = new Image();
+    }
+  }
+
+  removeImage(image: Image): void {
+    this.card.images.splice(this.card.images.indexOf(image), 1);
+  }*/
 
 }

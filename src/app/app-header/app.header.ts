@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CardService} from '../card.service';
-import {Card} from '../card';
+import {Card} from '../model';
 import {Subscription} from "rxjs";
 import {ErrorService, Error} from "../error.service";
 import {AuthenticationService} from '../authentication.service';
