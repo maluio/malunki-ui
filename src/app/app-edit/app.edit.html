@@ -31,6 +31,10 @@
     </ul>
   </div>-->
 
+  <div *ngFor="let image of card.images">
+    <img src="{{ image.url }}" class="img-responsive" />
+  </div>
+
     <div>
         <button type="submit" class="btn btn-success" (click)="updateCard()">Update</button>
         <button type="submit" class="btn btn-success" (click)="learnNow()">Learn now</button>
