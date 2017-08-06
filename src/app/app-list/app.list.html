@@ -13,7 +13,7 @@
             <td [innerHtml]="card.reviewDate | due"></td>
           <td><span class="label label-success">{{card.word}}</span></td>
             <td> {{card.gender}}</td>
-            <td [innerHtml]="card.front | result "></td>
+            <td [innerHtml]="card.front | result | itemizer"></td>
         </tr>
         </tbody>
     </table>

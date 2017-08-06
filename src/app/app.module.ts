@@ -22,6 +22,7 @@ import {ResultPipe} from './pipes/result.pipe';
 import {DuePipe} from './pipes/due.pipe';
 import {GenderPipe} from './pipes/gender.pipe';
 import {StarPipe} from './pipes/stars.pipe';
+import {ItemizerPipe} from './pipes/itemizer.pipe';
 
 const appRoutes: Routes = [
     {path: '', component: AppLearn},
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
         ResultPipe,
         DuePipe,
         GenderPipe,
-        StarPipe
+        StarPipe,
+        ItemizerPipe
     ],
     imports: [
         BrowserModule,

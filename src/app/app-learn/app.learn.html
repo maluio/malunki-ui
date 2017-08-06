@@ -6,7 +6,7 @@
     <span *ngIf="dueCard.gender"><i class="fa fa-venus-mars"></i></span>
 
   </div>
-  <div class="well" [innerHtml]="dueCard.front | mask"></div>
+  <div class="well" [innerHtml]="dueCard.front | mask | itemizer"></div>
   <div *ngFor="let image of dueCard.images" class="well">
     <img src="{{ image.url }}" class="img-responsive" />
   </div>
@@ -19,7 +19,7 @@
       <span class="label label-success">{{dueCard.word}}</span>
       <span *ngIf="dueCard.gender" class="label label-danger" [innerHtml]="dueCard.gender | gender"></span>
     </div>
-    <div class="well" [innerHtml]="dueCard.front | result"></div>
+    <div class="well" [innerHtml]="dueCard.front | result | itemizer"></div>
     <div class="row-margin">
       <button class='btn btn-default btn-block btn-lg' (click)="learnCard(dueCard, 0)">again</button>
       <button class='btn btn-default btn-block btn-lg' (click)="learnCard(dueCard, 240)">4 hours</button>
