@@ -33,6 +33,8 @@ export class AppLearn {
     cardSubscription: Subscription;
     revealed: boolean = false;
     word = '';
+    learnItems: LearnItem[] = [];
+    currentLearnItem: LearnItem = null;
 
     constructor(
         private cardService: CardService,
@@ -44,6 +46,7 @@ export class AppLearn {
                 cards = cards.filter((card) => card.reviewDate < new Date());
                 this.dueCard = cards[0];
                 this.findWord();
+                this.fillLearnItems();
             }
         );
     }
@@ -82,4 +85,76 @@ export class AppLearn {
             this.revealed = false;
         }
     }
+
+    fillLearnItems() {
+      if (!this.dueCard) {
+        return;
+      }
+      this.learnItems = [];
+      this.dueCard.images.forEach(
+        (img) => this.learnItems.push(
+          new LearnItem(
+            'img',
+            img.url
+          )
+        )
+      );
+
+      const temp = this.dueCard.front.replace(/\r\n/g, '^^^^^').replace(/[\r\n]/g, '^^^^^');
+
+      const arr = temp.split('^^^^^');
+
+      arr.forEach(
+        (line) =>  {
+          if (line) {
+           this.learnItems.push(
+             new LearnItem(
+               'line',
+               line
+             )
+           );
+          }
+        }
+      );
+      this.learnItems = this.shuffleArray(this.learnItems);
+      this.getNextLearnItem();
+    }
+
+    getNextLearnItem() {
+      const index = this.learnItems.indexOf(this.currentLearnItem);
+      if (index + 1 === this.learnItems.length) {
+        this.currentLearnItem = this.learnItems[0];
+      } else {
+        this.currentLearnItem = this.learnItems[index + 1];
+      }
+    }
+
+  shuffleArray<T> (array: T[]): T[] {
+    let currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  }
+}
+
+export class LearnItem {
+  type: string;
+  data: string;
+
+  constructor (type: string, data: string) {
+    this.type = type;
+    this.data = data;
+  }
 }
