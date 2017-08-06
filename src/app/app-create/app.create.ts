@@ -30,4 +30,11 @@ export class AppCreate {
         this.image = new Image();
       }
     }
+
+    removeImage(img: Image): void {
+      const index = this.card.images.indexOf(img);
+      if (index > -1) {
+        this.card.images.splice(index, 1);
+      }
+    }
 }

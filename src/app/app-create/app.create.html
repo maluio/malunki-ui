@@ -18,9 +18,10 @@
   <div class="form-group">
     <input type="text" placeholder="image url" class="form-control" [(ngModel)]="image.url">
     <button type="submit" class="btn btn-success" (click)="addImage()">Add Image</button>
-    <ul *ngFor="let image of card.images">
-      <li>{{image.url}}</li>
-    </ul>
+    <div *ngFor="let image of card.images">
+      <button type="submit" class="btn btn-danger" (click)="removeImage(image)">Remove Image</button>
+      <img src="{{ image.url }}" class="img-responsive" />
+    </div>
   </div>
 
   <button type="submit" class="btn btn-success" (click)="createCard()">Create</button>
