@@ -3,9 +3,10 @@ import {Router} from '@angular/router';
 
 import {Card} from '../model';
 import {CardService} from '../card.service';
-import {Subscription} from "rxjs";
+import {Subscription} from 'rxjs';
 
 import {markerSeparator} from '../globals';
+import {Itemizer, Item} from '../util/itemizer';
 
 import {trigger, state, animate, transition, style} from '@angular/animations';
 
@@ -33,12 +34,13 @@ export class AppLearn {
     cardSubscription: Subscription;
     revealed: boolean = false;
     word = '';
-    learnItems: LearnItem[] = [];
-    currentLearnItem: LearnItem = null;
+    learnItems: Item[] = [];
+    currentLearnItem: Item = null;
 
     constructor(
         private cardService: CardService,
-        private router: Router
+        private router: Router,
+        private itemizer: Itemizer
     ) {
         this.cardSubscription = cardService.cards.subscribe(
             cards => {
@@ -57,7 +59,7 @@ export class AppLearn {
         setTimeout(() => this.cardService.learnCard(card, nextReview), 100);
     }
 
-    reveal(){
+    reveal() {
         this.revealed = !this.revealed;
     }
 
@@ -90,32 +92,20 @@ export class AppLearn {
       if (!this.dueCard) {
         return;
       }
+
       this.learnItems = [];
+
+      this.learnItems = this.itemizer.itemize(this.dueCard.front);
+
       this.dueCard.images.forEach(
         (img) => this.learnItems.push(
-          new LearnItem(
+          new Item(
             'img',
             img.url
           )
         )
       );
 
-      const temp = this.dueCard.front.replace(/\r\n/g, '^^^^^').replace(/[\r\n]/g, '^^^^^');
-
-      const arr = temp.split('^^^^^');
-
-      arr.forEach(
-        (line) =>  {
-          if (line) {
-           this.learnItems.push(
-             new LearnItem(
-               'line',
-               line
-             )
-           );
-          }
-        }
-      );
       this.learnItems = this.shuffleArray(this.learnItems);
       this.getNextLearnItem();
     }
@@ -146,15 +136,5 @@ export class AppLearn {
     }
 
     return array;
-  }
-}
-
-export class LearnItem {
-  type: string;
-  data: string;
-
-  constructor (type: string, data: string) {
-    this.type = type;
-    this.data = data;
   }
 }

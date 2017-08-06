@@ -1,20 +1,24 @@
 import {Pipe, PipeTransform} from '@angular/core';
+import {Itemizer, Item} from '../util/itemizer';
 
 @Pipe({name: 'itemizer'})
 export class ItemizerPipe implements PipeTransform {
+
+  constructor(
+    private itemizer: Itemizer
+  ) {
+  }
 
   transform(value: string): string {
 
     let ul = '';
 
-    const temp = value.replace(/\r\n/g, '^^^^^').replace(/[\r\n]/g, '^^^^^');
+    const items: Item[] = this.itemizer.itemize(value);
 
-    const arr = temp.split('^^^^^');
-
-    arr.forEach(
-      (line) =>  {
-        if (line) {
-          ul += '<li>' + line + '</li>';
+    items.forEach(
+      (item) =>  {
+        if (item.data) {
+          ul += '<li>' + item.data + '</li>';
         }
       }
     );

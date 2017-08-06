@@ -23,6 +23,7 @@ import {DuePipe} from './pipes/due.pipe';
 import {GenderPipe} from './pipes/gender.pipe';
 import {StarPipe} from './pipes/stars.pipe';
 import {ItemizerPipe} from './pipes/itemizer.pipe';
+import {Itemizer} from './util/itemizer';
 
 const appRoutes: Routes = [
     {path: '', component: AppLearn},
@@ -60,7 +61,8 @@ const appRoutes: Routes = [
       CardService,
       CardHttpService,
       ErrorService,
-      AuthenticationService
+      AuthenticationService,
+      Itemizer
     ],
     bootstrap: [AppHeader]
 })
