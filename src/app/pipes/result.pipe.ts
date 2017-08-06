@@ -12,7 +12,7 @@ export class ResultPipe implements PipeTransform {
     let regEx = new RegExp('(' + markerSeparator + '.+' + markerSeparator + ')', 'g');
     return value.replace(regEx, function (match) {
       let regExNew = new RegExp(markerSeparator, 'g');
-        return '<span class="label label-success">' + match.replace(regExNew, '') + '</span>';
+        return '<u>' + match.replace(regExNew, '') + '</u>';
     });
   }
 }
