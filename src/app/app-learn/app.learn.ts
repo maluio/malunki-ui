@@ -5,7 +5,6 @@ import {Card} from '../model';
 import {CardService} from '../card.service';
 import {Subscription} from 'rxjs';
 
-import {markerSeparator} from '../globals';
 import {Itemizer, Item} from '../util/itemizer';
 
 import {trigger, state, animate, transition, style} from '@angular/animations';
@@ -33,7 +32,6 @@ export class AppLearn {
     dueCard: Card = null;
     cardSubscription: Subscription;
     revealed: boolean = false;
-    word = '';
     learnItems: Item[] = [];
     currentLearnItem: Item = null;
 
@@ -47,7 +45,6 @@ export class AppLearn {
                 cards = cards.sort((a, b) => a.reviewDate <= b.reviewDate ? -1 : 1);
                 cards = cards.filter((card) => card.reviewDate < new Date());
                 this.dueCard = cards[0];
-                this.findWord();
                 this.fillLearnItems();
             }
         );
@@ -67,21 +64,8 @@ export class AppLearn {
         this.router.navigate(['/edit', card.id]);
     }
 
-    findWord() {
-        if (!this.dueCard) {
-            return;
-        }
-
-        this.word = '';
-        const regEx = new RegExp('(' + markerSeparator + '.+' + markerSeparator + ')', 'g');
-        const match = this.dueCard.front.match(regEx);
-        if (match && match[0].length > 0) {
-            this.word = match[0].split(markerSeparator).join('');
-        }
-    }
-
     onSolutionKey(event: any) {
-        if (this.word === event.target.value) {
+        if (this.dueCard.word === event.target.value) {
             this.revealed = true;
         } else {
             this.revealed = false;
