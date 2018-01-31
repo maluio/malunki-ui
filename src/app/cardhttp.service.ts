@@ -30,7 +30,8 @@ export class CardHttpService {
         {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': 'Basic ' +  btoa(this.authService.getUsername() + ':' + this.authService.getPassword())
+          'X-Server-Select': 'malunki_api'
+          // 'Authorization': 'Basic ' +  btoa(this.authService.getUsername() + ':' + this.authService.getPassword())
         }
       );
     }
