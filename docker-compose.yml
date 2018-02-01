@@ -8,4 +8,11 @@ services:
     expose:
         - "80"
     volumes:
-        - ./dist:/var/www/dist/:ro
+        - ./dist:/var/www/dist/:rw
+
+  nodejs:
+    build:
+      context: ./docker/nodejs
+      dockerfile: ./Dockerfile
+    volumes:
+        - ./dist:/var/www/dist/:rw
