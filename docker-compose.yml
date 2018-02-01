@@ -15,4 +15,4 @@ services:
       context: ./docker/nodejs
       dockerfile: ./Dockerfile
     volumes:
-        - ./dist:/var/www/dist/:rw
+        - .:/var/www/dist/:rw
