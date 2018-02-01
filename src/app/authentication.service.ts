@@ -31,15 +31,6 @@ export class AuthenticationService {
   }
 
   isAuthenticated(): boolean {
-    if (
-      this.cookieService.get('username') == null ||
-      this.cookieService.get('password') == null
-    ) {
-      return false
-    }
-
-    this.username = this.cookieService.get('username');
-    this.password = this.cookieService.get('password');
     return true;
   }
 }

@@ -11,7 +11,7 @@ import {ErrorService, Error} from "./error.service";
 export class CardHttpService {
 
     private headers: Headers;
-    private apiUrl = 'https://calm-falls-84629.herokuapp.com/cards';
+    private apiUrl = '/cards';
 
     constructor(
         private http: Http,
@@ -19,13 +19,6 @@ export class CardHttpService {
         private authService:AuthenticationService
     )
     {
-      if (document.location.hostname == "limitless-atoll-18387.herokuapp.com") {
-        this.apiUrl = 'https://boiling-peak-29524.herokuapp.com/cards';
-      }
-
-      if (document.location.hostname == "localhost") {
-          this.apiUrl = 'http://localhost/cards';
-      }
       this.headers = new Headers(
         {
           'Accept': 'application/json',
