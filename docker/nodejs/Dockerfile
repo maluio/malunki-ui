@@ -10,7 +10,3 @@ RUN npm install -g @angular/cli@1.4.2
 # set npm as default package manager for root
 USER root
 RUN ng set --global packageManager=npm
-
-RUN cd /var/www ng  \
-  && npm install    \
-  && ng build --prod --aot

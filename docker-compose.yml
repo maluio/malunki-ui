@@ -16,3 +16,4 @@ services:
       dockerfile: ./Dockerfile
     volumes:
         - .:/var/www/dist/:rw
+    command: cd /var/www  && npm install && ng build --prod --aot
