@@ -15,5 +15,4 @@ services:
       context: ./docker/nodejs
       dockerfile: ./Dockerfile
     volumes:
-        - .:/var/www/dist/:rw
-    command: cd /var/www  && npm install && ng build --prod --aot
+        - .:/var/www/:rw
