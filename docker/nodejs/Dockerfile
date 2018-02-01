@@ -11,4 +11,6 @@ RUN npm install -g @angular/cli@1.4.2
 USER root
 RUN ng set --global packageManager=npm
 
-RUN ng build --prod --aot
+RUN cd /var/www ng  \
+  && npm install    \
+  && ng build --prod --aot
