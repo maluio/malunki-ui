@@ -11,7 +11,7 @@ import {ErrorService, Error} from "./error.service";
 export class CardHttpService {
 
     private headers: Headers;
-    private apiUrl = '/cards';
+    private apiUrl = 'cards';
 
     constructor(
         private http: Http,
