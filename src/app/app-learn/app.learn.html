@@ -17,7 +17,7 @@
     </div>
   </div>
   <div class="row-margin">
-    <input type="text" class="form-control" placeholder="type word" (keyup)="onSolutionKey($event)">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" type="text" class="form-control" placeholder="type word" (keyup)="onSolutionKey($event)">
     <button class='btn btn-default btn-block' (click)="reveal()">Show</button>
   </div>
   <div *ngIf="revealed">
