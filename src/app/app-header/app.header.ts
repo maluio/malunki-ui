@@ -3,8 +3,6 @@ import {CardService} from '../card.service';
 import {Card} from '../model';
 import {Subscription} from "rxjs";
 import {ErrorService, Error} from "../error.service";
-import {AuthenticationService} from '../authentication.service';
-import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -16,8 +14,6 @@ export class AppHeader implements OnInit {
     constructor(
         public cardService: CardService,
         private errorService: ErrorService,
-        private authenticationService: AuthenticationService,
-        private router: Router
     ) {
         this.errorSubscription = errorService.errors.subscribe(
             errors => this.errors = errors
@@ -25,12 +21,7 @@ export class AppHeader implements OnInit {
     }
 
     ngOnInit(): void {
-      if (this.authenticationService.isAuthenticated()){
-         this.cardService.loadCards();
-      }
-      else {
-        this.router.navigateByUrl("/login");
-      }
+      this.cardService.loadCards();
     }
 
     filterDueCards(card: Card): boolean {
@@ -38,11 +29,6 @@ export class AppHeader implements OnInit {
     }
 
     reload():void{
-      if (this.authenticationService.isAuthenticated()){
-        this.cardService.loadCards();
-      }
-      else {
-        this.router.navigateByUrl("/login");
-      }
+      this.cardService.loadCards();
     }
 }

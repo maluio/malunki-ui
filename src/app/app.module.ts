@@ -15,8 +15,6 @@ import {AppEdit} from './app-edit/app.edit';
 import {CardService} from './card.service';
 import {CardHttpService} from './cardhttp.service';
 import {ErrorService} from './error.service';
-import {AuthenticationService} from './authentication.service';
-import {AppLoginComponent} from './app-login/app-login.component';
 import {MaskPipe} from './pipes/mask.pipe';
 import {ResultPipe} from './pipes/result.pipe';
 import {DuePipe} from './pipes/due.pipe';
@@ -29,7 +27,6 @@ const appRoutes: Routes = [
     {path: '', component: AppLearn},
     {path: 'list', component: AppList},
     {path: 'create', component: AppCreate},
-    {path: 'login', component: AppLoginComponent},
     {path: 'edit/:id', component: AppEdit},
     {path: '**', redirectTo: '/'}
 ];
@@ -41,7 +38,6 @@ const appRoutes: Routes = [
         AppList,
         AppCreate,
         AppEdit,
-        AppLoginComponent,
         MaskPipe,
         ResultPipe,
         DuePipe,
@@ -61,7 +57,6 @@ const appRoutes: Routes = [
       CardService,
       CardHttpService,
       ErrorService,
-      AuthenticationService,
       Itemizer
     ],
     bootstrap: [AppHeader]

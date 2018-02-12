@@ -1,11 +1,10 @@
 import {Injectable}    from '@angular/core';
 import {Http, Headers} from '@angular/http';
-import {AuthenticationService} from './authentication.service';
 
 import 'rxjs/add/operator/toPromise';
 
 import {Card} from './model';
-import {ErrorService, Error} from "./error.service";
+import {ErrorService, Error} from './error.service';
 
 @Injectable()
 export class CardHttpService {
@@ -16,7 +15,6 @@ export class CardHttpService {
     constructor(
         private http: Http,
         private errorService: ErrorService,
-        private authService:AuthenticationService
     )
     {
       this.headers = new Headers(
@@ -24,7 +22,6 @@ export class CardHttpService {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
           'X-Server-Select': 'malunki_api'
-          // 'Authorization': 'Basic ' +  btoa(this.authService.getUsername() + ':' + this.authService.getPassword())
         }
       );
     }

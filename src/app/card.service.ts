@@ -16,7 +16,7 @@ export class CardService {
     loadCards(): void {
         this.cardHttpService.getCards()
             .then((cards) => {
-                //convert string to Date object
+                // convert string to Date object
                 cards.forEach(
                     (c) => c.reviewDate = new Date(c.reviewDate)
                 );
