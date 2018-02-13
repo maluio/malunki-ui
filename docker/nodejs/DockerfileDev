@@ -14,4 +14,4 @@ RUN ng set --global packageManager=npm
 RUN npm install
 
 #CMD ng serve -p 80 --host 0.0.0.0 --disable-host-check
-CMD ng serve --host 0.0.0.0 --disable-host-check
+CMD ng serve --host 0.0.0.0 --disable-host-check --live-reload false
