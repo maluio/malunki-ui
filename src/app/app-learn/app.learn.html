@@ -18,12 +18,20 @@
   </div>
   <div class="row-margin">
     <input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" type="text" class="form-control" placeholder="type word" (keyup)="onSolutionKey($event)">
+    <div *ngIf="dueCard.gender" class="well">
+      <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio1"><span class="label"><i class="fa fa-venus"></i></span>
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio2"><span  class="label"><i class="fa fa-mars"></i></span>
+      </label>
+    </div>
     <button class='btn btn-default btn-block' (click)="reveal()">Show</button>
   </div>
   <div *ngIf="revealed">
     <div class="well">
       <span class="label label-success">{{dueCard.word}}</span>
-      <span *ngIf="dueCard.gender" class="label label-danger" [innerHtml]="dueCard.gender | gender"></span>
+      <span *ngIf="dueCard.gender" class="label" [innerHtml]="dueCard.gender | gender"></span>
     </div>
     <div class="well" [innerHtml]="dueCard.front | result | itemizer"></div>
     <div *ngIf="dueCard.images">
